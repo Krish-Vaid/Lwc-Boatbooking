@@ -1,0 +1,17 @@
+<template>
+    <div class="photo-viewer-container">
+        <h1 class="title">Set Sail With These Picks</h1>
+        <template if:true={currentBoat}>
+            <div class="image-container fade-in">
+                <img src={currentBoatImage} alt="Boat Image" class="boat-image" />
+                <div class="overlay">
+                    <h2>{currentBoatName}</h2>
+                    <button class="book-now-btn" onclick={handleBookNow}>Book Now</button>
+                </div>
+            </div>
+        </template>
+        <template if:false={currentBoat}>
+            <p class="loading-text">Loading boats...</p>
+        </template>
+    </div>
+</template>

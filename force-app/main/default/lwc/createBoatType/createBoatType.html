@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="Create Boat Type">
+        <div class="slds-p-horizontal_medium">
+            <lightning-record-edit-form
+                object-api-name="BoatType__c"
+                onsuccess={handleSuccess}
+                onerror={handleError}>
+
+                <div class="slds-grid slds-grid_align-spread">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field 
+                            field-name="Name" 
+                            required="true" 
+                            class="slds-m-bottom_medium">
+                        </lightning-input-field>
+                    </div>
+                </div>
+                <!-- Submit Button -->
+                <lightning-button 
+                    variant="brand" 
+                    label="Create Boat Type" 
+                    type="submit">
+                </lightning-button>
+            </lightning-record-edit-form>
+
+            <!-- Success Message -->
+            <template if:true={successMessage}>
+                <div class="slds-text-color_success slds-m-top_medium">
+                    {successMessage}
+                </div>
+            </template>
+
+            <!-- Error Message -->
+            <template if:true={errorMessage}>
+                <div class="slds-text-color_error slds-m-top_medium">
+                    {errorMessage}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

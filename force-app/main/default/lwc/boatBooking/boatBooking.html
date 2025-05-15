@@ -1,0 +1,108 @@
+<template>
+    <lightning-card title="Book Your Boat" icon-name="custom:custom54">
+        <br>
+
+        <!-- Display Selected Boat Image on Top -->
+        <template if:true={selectedBoatImage}>
+            <div class="selected-boat-info" style="text-align: center; margin-bottom: 20px;">
+                <img src={selectedBoatImage} alt="Selected Boat" style="max-height: 200px; max-width: 100%; object-fit: contain;"/>
+            </div>
+        </template>
+
+        <!-- Display Boat Location on Map -->
+        
+
+        <!-- Booking Button -->
+        <div class="slds-align_absolute-center">
+            <lightning-button type="submit" label="Reserve" onclick={handleBooking}></lightning-button>
+        </div>
+
+        <!-- Name and Email Input Fields -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    name="Name"
+                    label="Your Name"
+                    value={Name}
+                    onchange={handleName}>
+                </lightning-input>
+            </div>
+            &nbsp;
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    type="email"
+                    name="Email"
+                    label="Your Email"
+                    value={Email}
+                    onchange={handleEmail}>
+                </lightning-input>
+            </div>
+        </div>
+        <br>
+
+        <!-- Booking Date and End Booking Date Fields -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                     type="date"
+                     name="bookingDate"
+                     label="Booking Date"
+                     value={bookingDate}
+                     onchange={handleBookingDate}>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    type="date"
+                    name="endBookingDate"
+                    label="End Booking Date"
+                    value={endBookingDate}
+                    onchange={handleEndBookingDate}>
+                </lightning-input>
+            </div> 
+        </div>
+        <br>
+
+        <!-- Boat Selection Dropdown and Price Display -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-combobox
+                    label="Select Boat"
+                    value={boatType}
+                    options={boatOptions}
+                    onchange={handleBoatOptions}
+                    placeholder="--Select One--">
+                </lightning-combobox>
+            </div>
+
+            &nbsp;
+
+            <div class="slds-col slds-size_1-of-2">
+                <b>Price:</b> {selectedBoatPrice} <b>(Per Day)</b>
+            </div>
+        </div>
+        <br>
+        <template if:true={selectedBoatLocation.latitude}>
+            <lightning-map
+                map-markers={mapMarkers}
+                zoom-level="10"
+                class="map-style"
+                style="height: 300px;">
+            </lightning-map>
+        </template>
+        <br>
+        <br>
+        <template if:true={successMessage}>
+            <div class="slds-text-color_success slds-m-top_medium">
+                {successMessage}
+            </div>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={errorMessage}>
+            <div class="slds-text-color_error slds-m-top_medium">
+                {errorMessage}
+            </div>
+        </template>
+    </lightning-card>
+</template>

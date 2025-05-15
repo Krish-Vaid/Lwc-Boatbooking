@@ -1,0 +1,19 @@
+<template>
+    <div class="highlight-container">
+        <h1 class="title">Highlight of the Day</h1>
+        <div class="tile-container">
+            <template for:each={boats} for:item="boat">
+                <div key={boat.id} class="tile fade-in">
+                    <img src={boat.imageUrl} alt="Boat Image" class="tile-image" />
+                    <div class="overlay">
+                        <h2>{boat.name}</h2>
+                        <button class="book-now-btn" data-id={boat.id} onclick={handleBookNow}>Book Now</button>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <template if:false={boats.length}>
+            <p class="loading-text">Loading highlights...</p>
+        </template>
+    </div>
+</template>

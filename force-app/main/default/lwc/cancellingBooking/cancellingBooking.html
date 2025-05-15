@@ -1,0 +1,100 @@
+<template>
+    <!-- OTP Verification Section -->
+    <template if:false={isOtpVerified}>
+        <lightning-card title="Verify Your Email" icon-name="custom:custom83">
+            <br>
+            <div class="slds-align_absolute-center">
+                <lightning-input 
+                    type="email"
+                    label="Enter Your Email" 
+                    value={email}
+                    onchange={handleEmailChange}>
+                </lightning-input>
+            </div>
+            <br>
+            <div class="slds-align_absolute-center">
+                <lightning-button 
+                    label="Send OTP" 
+                    onclick={sendOtp}>
+                </lightning-button>
+            </div>
+            <br>
+            <template if:true={isOtpSent}>
+                <div class="slds-align_absolute-center">
+                    <lightning-input 
+                        type="text"
+                        label="Enter OTP" 
+                        value={enteredOtp}
+                        onchange={handleOtpChange}>
+                    </lightning-input>
+                </div>
+                <br>
+                <div class="slds-align_absolute-center">
+                    <lightning-button 
+                        label="Verify OTP" 
+                        onclick={verifyOtpHandler}>
+                    </lightning-button>
+                </div>
+            </template>
+        </lightning-card>
+    </template>
+
+    <!-- Cancel Booking Section -->
+    <template if:true={isOtpVerified}>
+        <lightning-card title="Cancel Your Booking" icon-name="custom:custom54">
+            <br>
+            <div class="slds-grid slds-grid_vertical-align-center">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        name="Name"
+                        label="Your Name"
+                        value={name}
+                        onchange={handleNameChange}>
+                    </lightning-input>
+                </div>
+                &nbsp;
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        type="email"
+                        name="Email"
+                        label="Your Verified Email"
+                        value={email}
+                        disabled>
+                    </lightning-input>
+                    <div class="slds-text-color_weak slds-text-body_small">
+                        (This email is verified and cannot be edited)
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="slds-grid slds-grid_vertical-align-center">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        type="date"
+                        name="bookingDate"
+                        label="Booking Date"
+                        value={bookingDate}
+                        onchange={handleBookingDateChange}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        type="date"
+                        name="endBookingDate"
+                        label="End Booking Date"
+                        value={endBookingDate}
+                        onchange={handleEndBookingDateChange}>
+                    </lightning-input>
+                </div> 
+            </div>
+            <br>
+            <div class="slds-align_absolute-center">
+                <lightning-button 
+                    type="button" 
+                    label="Cancel Booking" 
+                    onclick={handleCancelBooking}>
+                </lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+</template>

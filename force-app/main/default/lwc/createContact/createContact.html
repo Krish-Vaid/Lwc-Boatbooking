@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Create Contact for Boat Company" icon-name="standard:contact">
+        <div class="slds-p-horizontal_medium">
+            <lightning-input label="Contact Name" value={contactName} onchange={handleNameChange}></lightning-input>
+            <lightning-input label="Contact Email" value={contactEmail} onchange={handleEmailChange} type="email"></lightning-input>
+            <lightning-button variant="brand" label="Create Contact" onclick={handleCreateContact}></lightning-button>
+            <template if:true={contactCreated}>
+                <div class="slds-m-top_medium">
+                    <p>Contact Created Successfully! Contact ID: {contactId}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

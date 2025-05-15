@@ -1,0 +1,130 @@
+<template>
+    <lightning-card title="Register Your Boat" icon-name="custom:custom54">
+        <div class="slds-align_absolute-center">
+            <lightning-button type="submit" label="Register" onclick={handleCreation}></lightning-button>
+        </div>
+        <br />
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    name="Name"
+                    label="Boat Name"
+                    value={Name}
+                    onchange={handleName}
+                ></lightning-input>
+            </div>
+            &nbsp;
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    type="number"
+                    name="Price"
+                    label="Boat Price"
+                    value={Price}
+                    onchange={handlePrice}
+                ></lightning-input>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-textarea
+                    name="Description"
+                    label="Boat Description"
+                    value={Description}
+                    onchange={handleDescription}
+                ></lightning-textarea>
+            </div>
+            &nbsp;
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    name="Length"
+                    label="Boat Length (ft)"
+                    value={Length}
+                    onchange={handleLength}
+                    type="number"
+                ></lightning-input>
+            </div>
+           
+        </div>
+
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    name="Longitude"
+                    label="Longitude"
+                    value={Longitude}
+                    onchange={handleLongitude}
+                ></lightning-input>
+            </div>
+            &nbsp;
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    name="Latitude"
+                    label="Latitude"
+                    value={Latitude}
+                    onchange={handleLatitude}
+                ></lightning-input>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    name="YearBuilt"
+                    label="Year Built"
+                    value={YearBuilt}
+                    onchange={handleYearBuilt}
+                    type="number"
+                ></lightning-input>
+            </div>
+            &nbsp;
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-combobox
+                    label="Select Contact"
+                    value={selectedContactId}
+                    options={contactOptions}
+                    onchange={handleContactChange}
+                    placeholder="Select Contact"
+                ></lightning-combobox>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-combobox
+                    label="Select Boat Type"
+                    value={selectedBoatTypeId}
+                    options={boatTypeOptions}
+                    onchange={handleBoatTypeChange}
+                    placeholder="Select Boat Type"
+                ></lightning-combobox>
+            </div>
+        </div>
+
+        <!-- Picture URL field -->
+        <div class="slds-grid slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                    name="Picture"
+                    label="Picture URL"
+                    value={ImageURL}
+                    onchange={handlePictureChange}
+                    type="url"
+                    placeholder="Enter picture URL"
+                ></lightning-input>
+            </div>
+        </div>
+        <template if:true={successMessage}>
+            <div class="slds-text-color_success slds-m-top_medium">
+                {successMessage}
+            </div>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={errorMessage}>
+            <div class="slds-text-color_error slds-m-top_medium">
+                {errorMessage}
+            </div>
+        </template>
+    </lightning-card>
+</template>
